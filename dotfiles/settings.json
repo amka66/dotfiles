@@ -1,23 +1,32 @@
 {
     "workbench.colorTheme": "Default High Contrast",
     "workbench.colorCustomizations": {
-        "titleBar.activeBackground": "#a76a00",
+        "titleBar.activeBackground": "#a7005c",
     },
-    "explorer.confirmDelete": false,
+    // "explorer.confirmDelete": false,
     "jupyter.askForKernelRestart": false,
 
     "[python]": {
-        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.defaultFormatter": "charliermarsh.ruff",                        // alt., ms-python.black-formatter
         "editor.formatOnSave": true,                                            // <-- true, {false}
         "editor.formatOnSaveMode": "file",                                      // {file}, modifications, modificationsIfAvailable
         "editor.codeActionsOnSave": {
+            "source.fixAll": "explicit",                                        // <-- explicit, always, never (?)
             "source.organizeImports": "explicit",                               // <-- explicit, always, never
             "source.unusedImports": "explicit",                                 // <-- explicit, always, never
             "source.convertImportFormat": "never",                              // <-- explicit, always, never
         },
     },
 
-    // "python.defaultInterpreterPath": "${workspaceFolder}/.venv",                // default: python
+    "notebook.formatOnSave.enabled": true,                                      // <-- true, false (?)
+    "notebook.codeActionsOnSave": {
+        "notebook.source.fixAll": "explicit",                                   // <-- explicit, always, never (?)
+        "notebook.source.organizeImports": "explicit",                          // <-- explicit, always, never (?)
+        "notebook.source.unusedImports": "explicit",                            // <-- explicit, always, never (?)
+        "notebook.source.convertImportFormat": "never",                         // <-- explicit, always, never (?)
+    },
+
+    "python.defaultInterpreterPath": "${workspaceFolder}/.venv",                // default: python
     // "python.venvFolders": [  // only per user?                                  // default: []
     //     "${workspaceFolder}",
     // ],
@@ -29,6 +38,19 @@
     "python.analysis.importFormat":	"relative",                                 // relative, {absolute}
     "python.testing.unittestEnabled": true,                                     // <-- true, {false}
     "python.testing.pytestEnabled": true,                                       // <-- true, {false}
+
+    // "ruff.enable": true,  // enable / disable extension instead
+    "ruff.importStrategy": "useBundled",                                        // useBundled, {fromEnvironment}
+
+    // // "black-formatter.enabled": false,  // enable / disable extension instead
+    // "black-formatter.importStrategy": "useBundled",                             // {useBundled}, fromEnvironment
+
+    // "isort.enabled": true,  // enable / disable extension instead
+    "isort.importStrategy": "useBundled",                                       // {useBundled}, fromEnvironment
+    "isort.args": [
+        "--profile",
+        "black"
+    ],
 
     // "pylint.enabled": true,  // enable / disable extension instead
     "pylint.ignorePatterns": [                                                  // <-- default: []
@@ -42,16 +64,6 @@
     "mypy-type-checker.importStrategy": "useBundled",                           // {useBundled}, fromEnvironment
     "mypy-type-checker.args": [
         "--check-untyped-defs",
-    ],
-
-    // "black-formatter.enabled": true,  // enable / disable extension instead
-    "black-formatter.importStrategy": "useBundled",                             // {useBundled}, fromEnvironment
-
-    // "isort.enabled": true,  // enable / disable extension instead
-    "isort.importStrategy": "useBundled",                                       // {useBundled}, fromEnvironment
-    "isort.args": [
-        "--profile",
-        "black"
     ],
 
     "cSpell.enabled": true,                                                     // <-- {true}, false
