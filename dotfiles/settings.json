@@ -7,43 +7,43 @@
     "jupyter.askForKernelRestart": false,
 
     "[python]": {
-        "editor.defaultFormatter": "charliermarsh.ruff",                        // alt., ms-python.black-formatter
+        "editor.defaultFormatter": "ms-python.black-formatter",                 // <-- alt., charliermarsh.ruff
         "editor.formatOnSave": true,                                            // <-- true, {false}
         "editor.formatOnSaveMode": "file",                                      // {file}, modifications, modificationsIfAvailable
         "editor.codeActionsOnSave": {
-            "source.fixAll": "explicit",                                        // <-- explicit, always, never (?)
-            "source.organizeImports": "explicit",                               // <-- explicit, always, never
-            "source.unusedImports": "explicit",                                 // <-- explicit, always, never
-            "source.convertImportFormat": "never",                              // <-- explicit, always, never
+            // "source.fixAll": "explicit",                                        // <-- explicit, always, never (?) // ruff (avoid for the time being)
+            "source.organizeImports": "explicit",                               // <-- explicit, always, never  // isort or ruff
+            "source.unusedImports": "explicit",                                 // <-- explicit, always, never  // pylance
+            "source.convertImportFormat": "never",                              // <-- explicit, always, never  // pylance
         },
     },
 
     "notebook.formatOnSave.enabled": true,                                      // <-- true, false (?)
     "notebook.codeActionsOnSave": {
-        "notebook.source.fixAll": "explicit",                                   // <-- explicit, always, never (?)
-        "notebook.source.organizeImports": "explicit",                          // <-- explicit, always, never (?)
-        "notebook.source.unusedImports": "explicit",                            // <-- explicit, always, never (?)
-        "notebook.source.convertImportFormat": "never",                         // <-- explicit, always, never (?)
+        // "notebook.source.fixAll": "explicit",                                   // <-- explicit, always, never (?)  // ruff (avoid for the time being)
+        "notebook.source.organizeImports": "explicit",                          // <-- explicit, always, never (?)  // isort or ruff
+        "notebook.source.unusedImports": "explicit",                            // <-- explicit, always, never (?)  // pylance
+        "notebook.source.convertImportFormat": "never",                         // <-- explicit, always, never (?)  // pylance
     },
 
-    // "python.defaultInterpreterPath": "${workspaceFolder}/.venv",                // default: python
-    // "python.venvFolders": [  // only per user?                                  // default: []
-    //     "${workspaceFolder}",
-    // ],
+    "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python3",    // default: python
+    "python.venvFolders": [  // only per user?                                  // default: []
+        "${workspaceFolder}",
+    ],
     "python.interpreter.infoVisibility": "always",  // only per user?
 
     "python.languageServer": "Pylance",                                         // Pylance, None, {Default}
-    "python.analysis.typeCheckingMode": "strict",                               // <-- strict, basic, {off}
+    "python.analysis.typeCheckingMode": "strict",   // pypassed by pyright settings in pyproject.toml   // <-- strict, basic, {off}
     "python.analysis.autoImportCompletions": true,                              // <-- true, {false}
     "python.analysis.importFormat":	"relative",                                 // relative, {absolute}
     "python.testing.unittestEnabled": true,                                     // <-- true, {false}
     "python.testing.pytestEnabled": true,                                       // <-- true, {false}
 
-    // // "black-formatter.enabled": false,  // enable / disable extension instead
-    // "black-formatter.importStrategy": "useBundled",                             // {useBundled}, fromEnvironment
-    // "black-formatter.args": [
-    //     "--line-length", "88"
-    // ]
+    // "black-formatter.enabled": true,  // enable / disable extension instead
+    "black-formatter.importStrategy": "useBundled",                             // {useBundled}, fromEnvironment
+    "black-formatter.args": [
+        "--line-length", "88"
+    ],
 
     // "isort.enabled": true,  // enable / disable extension instead
     "isort.importStrategy": "useBundled",                                       // {useBundled}, fromEnvironment
@@ -51,9 +51,10 @@
         "--profile", "black"
     ],
 
-    // "ruff.enable": true,  // enable / disable extension instead
+    "ruff.enable": true,    // undocumented; alt., can enable / disable extension instead   // <-- {true}, false
     "ruff.importStrategy": "useBundled",
     "ruff.lineLength": 88,                                                      // default: 88
+    "ruff.organizeImports": false,                                              // <-- {true}, false // avoid being activated on 'organizeImports'
 
     // "mypy-type-checker.enabled": true,  // enable / disable extension instead
     "mypy-type-checker.ignorePatterns": [                                       // <-- default: []
@@ -63,13 +64,13 @@
         "--check-untyped-defs",
     ],
 
-    // "pylint.enabled": true,  // enable / disable extension instead
+    "pylint.enabled": true, // alt., can enable / disable extension instead     // <-- {true}, false
     "pylint.ignorePatterns": [                                                  // <-- default: []
     ],
     "pylint.lintOnChange": true,  // only per user?                             // true, {false}
     "pylint.importStrategy": "useBundled",                                      // {useBundled}, fromEnvironment
 
-    // "cSpell.enabled": true,  // enable / disable extension instead
+    "cSpell.enabled": true,                                                     // <-- {true}, false
     "cSpell.language": "en",
     "cSpell.enabledFileTypes": {
         "*": true                                                               // <--
