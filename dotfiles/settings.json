@@ -71,7 +71,7 @@
     "pylint.importStrategy": "useBundled",                                      // {useBundled}, fromEnvironment
 
     "cSpell.enabled": true,                                                     // <-- {true}, false
-    "cSpell.language": "en",
+    "cSpell.language": "en,he",
     "cSpell.enabledFileTypes": {
         "*": true                                                               // <--
     },
